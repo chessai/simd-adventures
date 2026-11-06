@@ -1,0 +1,9 @@
+### build/membench 1024
+hugepages=madvise
+working-set   latency(1)   mlp=4    mlp=8   mlp=16   mlp=32   [ns per random 64B line]
+      1 MiB        8.6     2.04     1.03     0.59     0.52
+      4 MiB       58.0    10.79     6.57     2.69     1.58
+     16 MiB       74.1    17.06     6.27     2.47     1.97
+     64 MiB      112.4    30.12    13.26     6.16     3.64
+    256 MiB      119.5    30.83    15.82     8.15     5.33
+   1024 MiB      118.5    31.34    15.99     8.35     6.13

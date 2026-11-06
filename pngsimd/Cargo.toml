@@ -1,0 +1,43 @@
+[package]
+name = "pngsimd"
+version = "0.1.0"
+edition = "2021"
+description = "A minimal PNG decoder whose byte-crunching stages are vectorised (SSE4.1/AVX2/AVX-512/NEON) behind a 128-bit abstraction; inflate deliberately scalar"
+license = "MIT"
+
+[lib]
+name = "pngsimd"
+path = "src/lib.rs"
+
+[dependencies]
+clap.workspace = true   # binaries
+simdlab.workspace = true
+flate2 = { version = "1", features = ["zlib"], default-features = false, optional = true }
+png = { version = "0.17", optional = true }   # bench_decode comparison (feature pngcrate)
+fdeflate = { version = "0.3", optional = true } # a fast pure-Rust inflater for the inflate stage (feature fdeflate)
+
+[dev-dependencies]
+flate2 = "1"          # zlib round-trip fuzzing of the inflater
+crc32fast = "1"       # CRC-32 reference
+adler = "1"           # Adler-32 reference
+png = "0.17"          # pure-Rust decoder used as the pixel oracle for the corpus
+
+[features]
+default = []
+zlib = ["dep:flate2"]      # system zlib for the inflate stage (bench "+zlib" rows)
+pngcrate = ["dep:png"]     # bench_decode: compare with the pure-Rust png crate
+fdeflate = ["dep:fdeflate"] # fdeflate for the inflate stage (bench "+fdeflate" rows)
+libpng = []                # bench_decode links the system libpng16 (simplified API) for a wall-clock comparison
+
+[[bin]]
+name = "pngsimd_decode"
+path = "src/bin/pngsimd_decode.rs"
+
+[[bin]]
+name = "pngsimd_bench_kernels"
+path = "src/bin/bench_kernels.rs"
+
+[[bin]]
+name = "pngsimd_bench_decode"
+path = "src/bin/bench_decode.rs"
+

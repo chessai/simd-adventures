@@ -1,0 +1,20 @@
+# Rust build artifacts
+/target
+
+# nix / direnv
+/.direnv
+
+# pngsimd corpus is generated (nix build .#pngsimd-corpus, or scripts/make_corpus.py)
+/pngsimd/corpus/*.png
+
+# QEMU / valgrind / process core dumps
+*.core
+vgcore.*
+# nix build output links
+/result*
+
+# cargo-fuzz build and run outputs (vcodec/fuzz is its own workspace)
+/vcodec/fuzz/target
+/vcodec/fuzz/corpus
+/vcodec/fuzz/artifacts
+/vcodec/fuzz/coverage

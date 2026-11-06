@@ -1,0 +1,30 @@
+[package]
+name = "vcodec-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+# Its own workspace (cargo-fuzz builds it with sanitizer flags), not a member of the root one.
+[workspace]
+members = ["."]
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+arbitrary = { version = "1", features = ["derive"] }
+vcodec = { path = ".." }
+simdlab = { path = "../../simdlab" }
+
+[[bin]]
+name = "roundtrip"
+path = "fuzz_targets/roundtrip.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "decode_vs_scalar"
+path = "fuzz_targets/decode_vs_scalar.rs"
+test = false
+doc = false

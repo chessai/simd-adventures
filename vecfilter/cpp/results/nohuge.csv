@@ -1,0 +1,11 @@
+backend,structure,api,op,bytes,nkeys,bpk,dist,qdist,window,nops,ns_per_op,mops,cycles_per_op,cycles_src,ipc,l1_miss_per_op,llc_miss_per_op,brmiss_per_op,extra
+avx2,classic-k7,per-key,insert,1073741824,858993459,10.000,uniform,mixed,32,858993459,129.6541,7.713,272.279,tsc,nan,nan,nan,nan,0.000000
+avx2,classic-k7,per-key,lookup,1073741824,858993459,10.000,uniform,mixed,32,16777216,115.5562,8.654,242.668,tsc,nan,nan,nan,nan,0.504271
+avx2,blocked32,per-key,insert,1073741824,858993459,10.000,uniform,mixed,32,429522944,31.9249,31.324,67.048,tsc,nan,nan,nan,nan,0.000000
+avx2,blocked32,batch,insert,1073741824,858993459,10.000,uniform,mixed,32,429470515,15.4612,64.678,32.473,tsc,nan,nan,nan,nan,0.000000
+avx2,blocked32,per-key,lookup,1073741824,858993459,10.000,uniform,mixed,32,16777216,32.1270,31.126,67.467,tsc,nan,nan,nan,nan,0.506204
+avx2,blocked32,batch,lookup,1073741824,858993459,10.000,uniform,mixed,32,16777216,17.4705,57.239,36.688,tsc,nan,nan,nan,nan,0.506204
+avx2,cuckoo16,per-key,insert,1073741824,510027366,16.842,uniform,mixed,32,255026790,209.4784,4.774,439.911,tsc,nan,nan,nan,nan,0.000000
+avx2,cuckoo16,batch,insert,1073741824,510027366,16.842,uniform,mixed,32,255000576,183.3199,5.455,384.977,tsc,nan,nan,nan,nan,0.000000
+avx2,cuckoo16,per-key,lookup,1073741824,510027366,16.842,uniform,mixed,32,16777216,53.4125,18.722,112.166,tsc,nan,nan,nan,nan,0.499941
+avx2,cuckoo16,batch,lookup,1073741824,510027366,16.842,uniform,mixed,32,16777216,33.7710,29.611,70.919,tsc,nan,nan,nan,nan,0.499941

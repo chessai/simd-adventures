@@ -1,0 +1,39 @@
+[package]
+name = "vcodec"
+version = "0.1.0"
+edition = "2021"
+description = "Vectorised hex / base64 / percent codecs sharing one SIMD framework and one streaming API"
+license = "MIT OR Apache-2.0"
+
+[lib]
+bench = false
+
+[features]
+default = []
+# Insert `# LLVM-MCA-BEGIN/END` markers into the hot loops (for `scripts/mca.sh`).
+mca-markers = []
+# benches/codecs.rs: compare with OpenSSL's EVP_EncodeBlock / EVP_DecodeBlock (links the system libcrypto).
+openssl = ["dep:openssl-sys"]
+
+[dependencies]
+clap.workspace = true   # vcodec_bench, workload's ValueEnums
+simdlab.workspace = true
+openssl-sys = { version = "0.9", optional = true }
+
+[dev-dependencies]
+criterion = { version = "0.5", default-features = false, features = ["cargo_bench_support"] }
+proptest = "1"
+base64 = "0.22"
+hex = "0.4"
+percent-encoding = "2"
+base64-simd = "0.8"
+hex-simd = "0.8"
+
+[[bench]]
+name = "codecs"
+harness = false
+
+[[bin]]
+name = "vcodec_bench"
+path = "src/bin/bench.rs"
+bench = false

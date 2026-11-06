@@ -1,0 +1,117 @@
+asm: target/mca/vcodec-92ec2f7854bd4aa0.s
+hex_encode: 5 instances
+hex_decode: 9 instances
+b64_encode: 4 instances
+b64_decode: 5 instances
+url_encode: 4 instances
+url_decode: 5 instances
+
+== llvm-mca (-mcpu=skylake-avx512) ==
+--- hex_encode [avx2] (target/mca/hex_encode.avx2.4.s)
+    Iterations:        100
+    Instructions:      1200
+    Total Cycles:      614
+    Total uOps:        1400
+    Dispatch Width:    6
+    uOps Per Cycle:    2.28
+    IPC:               1.95
+    Block RThroughput: 6.0
+--- hex_encode [sse] (target/mca/hex_encode.sse.3.s)
+    Iterations:        100
+    Instructions:      1000
+    Total Cycles:      411
+    Total uOps:        1200
+    Dispatch Width:    6
+    uOps Per Cycle:    2.92
+    IPC:               2.43
+    Block RThroughput: 4.0
+--- hex_decode [avx2] (target/mca/hex_decode.avx2.1.s)
+    Iterations:        100
+    Instructions:      2800
+    Total Cycles:      930
+    Total uOps:        3000
+    Dispatch Width:    6
+    uOps Per Cycle:    3.23
+    IPC:               3.01
+    Block RThroughput: 9.0
+--- hex_decode [sse] (target/mca/hex_decode.sse.7.s)
+    Iterations:        100
+    Instructions:      2800
+    Total Cycles:      874
+    Total uOps:        3000
+    Dispatch Width:    6
+    uOps Per Cycle:    3.43
+    IPC:               3.20
+    Block RThroughput: 8.0
+--- b64_encode [avx2] (target/mca/b64_encode.avx2.3.s)
+    Iterations:        100
+    Instructions:      1400
+    Total Cycles:      437
+    Total uOps:        1600
+    Dispatch Width:    6
+    uOps Per Cycle:    3.66
+    IPC:               3.20
+    Block RThroughput: 2.7
+--- b64_encode [sse] (target/mca/b64_encode.sse.2.s)
+    Iterations:        100
+    Instructions:      1300
+    Total Cycles:      386
+    Total uOps:        1400
+    Dispatch Width:    6
+    uOps Per Cycle:    3.63
+    IPC:               3.37
+    Block RThroughput: 2.3
+--- b64_decode [avx2] (target/mca/b64_decode.avx2.1.s)
+    Iterations:        100
+    Instructions:      1900
+    Total Cycles:      626
+    Total uOps:        2100
+    Dispatch Width:    6
+    uOps Per Cycle:    3.35
+    IPC:               3.04
+    Block RThroughput: 6.0
+--- b64_decode [sse] (target/mca/b64_decode.sse.0.s)
+    Iterations:        100
+    Instructions:      1700
+    Total Cycles:      522
+    Total uOps:        1900
+    Dispatch Width:    6
+    uOps Per Cycle:    3.64
+    IPC:               3.26
+    Block RThroughput: 5.0
+--- url_encode [avx2] (target/mca/url_encode.avx2.1.s)
+    Iterations:        100
+    Instructions:      10300
+    Total Cycles:      2418
+    Total uOps:        12100
+    Dispatch Width:    6
+    uOps Per Cycle:    5.00
+    IPC:               4.26
+    Block RThroughput: 20.2
+--- url_encode [sse] (target/mca/url_encode.sse.3.s)
+    Iterations:        100
+    Instructions:      6900
+    Total Cycles:      2015
+    Total uOps:        8200
+    Dispatch Width:    6
+    uOps Per Cycle:    4.07
+    IPC:               3.42
+    Block RThroughput: 17.0
+--- url_decode [avx2] (target/mca/url_decode.avx2.1.s)
+    Iterations:        100
+    Instructions:      7600
+    Total Cycles:      1771
+    Total uOps:        8600
+    Dispatch Width:    6
+    uOps Per Cycle:    4.86
+    IPC:               4.29
+    Block RThroughput: 14.3
+--- url_decode [sse] (target/mca/url_decode.sse.0.s)
+    Iterations:        100
+    Instructions:      6100
+    Total Cycles:      1420
+    Total uOps:        6700
+    Dispatch Width:    6
+    uOps Per Cycle:    4.72
+    IPC:               4.30
+    Block RThroughput: 11.2

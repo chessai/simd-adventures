@@ -1,0 +1,13 @@
+[package]
+name = "simdlab"
+version = "0.1.0"
+edition = "2024"
+description = "Shared infrastructure for the SIMD experiments: backend detection and selection, CLI arguments, perf counters, RNGs, aligned buffers"
+
+[dependencies]
+clap.workspace = true
+libc.workspace = true
+
+[[bin]]
+name = "simdlab"
+path = "src/main.rs"

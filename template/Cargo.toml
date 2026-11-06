@@ -1,0 +1,13 @@
+[package]
+name = "template"
+version = "0.1.0"
+edition = "2024"
+description = "Minimal experiment: wrapping sum of u32 with scalar, portable, AVX2 and NEON backends. Copy it to start a new experiment."
+
+[dependencies]
+clap.workspace = true
+simdlab.workspace = true
+
+[[bin]]
+name = "template_bench"
+path = "src/bin/bench.rs"

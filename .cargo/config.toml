@@ -1,0 +1,7 @@
+# Enable native CPU features (AVX2/AVX-512 if available). Scoped to the host
+# target so it doesn't leak into aarch64 cross builds.
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "target-cpu=native"]
+
+# aarch64 linker and QEMU runner come from the dev shell, via the
+# CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_{LINKER,RUNNER} env vars.

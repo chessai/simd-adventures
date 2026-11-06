@@ -1,0 +1,22 @@
+[package]
+name = "vecfilter"
+version = "0.1.0"
+edition = "2024"
+description = "Rust port of vecfilter: cache-line-blocked Bloom filter and cuckoo filter with SIMD backends (portable / AVX2 / AVX-512 / NEON)"
+
+[dependencies]
+clap.workspace = true
+simdlab.workspace = true
+
+[features]
+# AVX-512 only: test two 32-byte Bloom blocks per zmm in contains_batch. Off by default, as in
+# the C++ (VF_AVX512_PAIRED_LOOKUP): measured slower in cache (vecfilter/REPORT.md §5.6).
+avx512-paired-lookup = []
+
+[[bin]]
+name = "vecfilter_bench"
+path = "src/bin/bench.rs"
+
+[[bin]]
+name = "vecfilter_fpr"
+path = "src/bin/fpr.rs"
